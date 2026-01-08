@@ -1,5 +1,3 @@
-# Conservatoire National des Arts et Métiers 
-
 <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Pmy7RrlugdjSzWyd9ZTHDtD8m3I1yyJq-w&s" width="200"></center>
 
 ## Licence Informatique & Certificat Analyste en Cybersécurité
@@ -20,5 +18,3 @@ Ce dépôt regroupe mes travaux, projets et ressources réalisés dans le cadre 
 - Sécurisation des systèmes et réseaux  
 - Fondamentaux de la cyberdéfense  
 
-## 📝 À propos
-Ce dépôt reflète mon parcours au CNAM et mon engagement dans l'apprentissage de l’informatique et de la cybersécurité.
