@@ -1,0 +1,105 @@
+fichier test_2013-2014-2.txt :
+
+terminal : utf-8
+vim : :set fileencoding=utf-8 
+
+b
+à
+
+
+1) 
+terminal : utf-8
+vim : :set fileencoding=utf-8
+
+file test_2013-2014-2.txt 
+test_2013-2014-2.txt: UTF-8 Unicode text
+
+cat test_2013-2014-2.txt 
+b
+à
+
+hexdump -cx test_2013-2014-2.txt 
+0000000   b  \n   �   �  \n                                            
+0000000    0a62    a0c3    000a                                        
+0000005
+
+0a = \n
+62 = b
+c3 = � <= non représentable en utf-8
+a0 = � <= non représentable en utf-8
+0a = \n
+
+c3a0 = à en utf-8 mais non représentable en ascii (hexdump sortie en ascii, i.e il décompose a0c3 en a0 et c3)
+
+
+
+2)
+terminal : utf-8
+vim : :set fileencoding=latin1 (iso-8859-1)
+
+
+file test_2013-2014-2.txt 
+test_2013-2014-2.txt: ISO-8859 text
+
+cat test_2013-2014-2.txt 
+b
+   <= Le caractère n'apparaît pas car non représentable en utf-8
+
+hexdump -cx -v test_2013-2014-2.txt 
+0000000   b  \n   �  \n                                                
+0000000    0a62    0ae0                                                
+0000004
+
+0a = \n
+62 = b
+0a = \n
+e0 = �
+
+
+e0 = à en latin1 mais ne correspond à aucun caractère en utf-8
+
+3)
+terminal : latin1
+vim : :set fileencoding=utf-8
+
+file test_2013-2014-2.txt 
+test_2013-2014-2.txt: UTF-8 Unicode text
+
+cat test_2013-2014-2.txt 
+b
+Ã <= c3 en latin
+
+hexdump -cx -v test_2013-2014-2.txt 
+0000000   b  \n   Ã      \n                                            
+0000000    0a62    a0c3    000a                                        
+0000005
+
+0a = \n
+62 = b
+a0 = caractère insécable en latin1 (représenté ici par un blanc)
+c3 = Ã <= c3 en latin1
+0a = \n
+
+4) 
+
+terminal : latin1
+vim : :set fileencoding=latin1
+
+file test_2013-2014-2.txt 
+test_2013-2014-2.txt: ISO-8859 text
+
+cat test_2013-2014-2.txt 
+b
+à
+
+hexdump -cx -v test_2013-2014-2.txt 
+0000000   b  \n   à  \n                                                
+0000000    0a62    0ae0                                                
+0000004
+
+0a = \n
+62 = b
+0a = \n
+e0 = à => en latin1
+
+

@@ -1,0 +1,2 @@
+pkeyutl -encrypt -in poo.dec -inkey cle_publique.pem -pubin -out poo.enc
+pkeyutl -decrypt -in caca.enc -inkey cle_publique.pem -out caca.dec

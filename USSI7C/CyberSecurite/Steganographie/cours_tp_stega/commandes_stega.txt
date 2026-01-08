@@ -1,0 +1,2 @@
+steghide embed -cf monkey.jpeg -ef message.txt
+steghide extract -sf 1024px-Terry_A._Davis_in_front_of_Richland_WA_library.jpg
