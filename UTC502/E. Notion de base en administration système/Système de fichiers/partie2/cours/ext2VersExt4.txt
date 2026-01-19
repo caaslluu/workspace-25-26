@@ -1,0 +1,33 @@
+Convert from ext2 filesystem to ext4 directly.
+In this part, I used another file container (RAM). Regarding the file container, there is a very good lesson in SYA710 that Professor John Selmys is teaching in Seneca College.
+1. Create an ext2 filesystem
+[root@f11 ~]# mke2fs –t ext2 /dev/ram0
+[root@f11 ~]# mkdir mntCleusb
+[root@f11 ~]# mount /dev/ram0 mntCleusb
+[root@f11 ~]# df –Thi /mnt2
+Filesystem       Type    Inodes  IUsed   IFree   IUse% Mounted on
+/dev/ram0        ext2      4.0K    11        4.0K    1%       /mnt2
+[root@f11 ~]# cp /etc/*  mntCleusb
+[root@f11 ~]# df –Thi mntCleusb
+Filesystem       Type    Inodes  IUsed   IFree   IUse% Mounted on
+/dev/ram0        ext2      4.0K    140      3.9K    4%       /mnt2
+
+2. Convert the ext2 filesystem to ext4
+[root@f11 ~]# umount mntCleusb
+[root@f11 ~]# tune2fs -O dir_index,uninit_bg,has_journal /dev/ram0
+tune2fs 1.41.4 (27-Jan-2009)
+Please run e2fsck on the filesystem.
+Creating journal inode: done
+This filesystem will be automatically checked every 39 mounts or
+180 days, whichever comes first. Use tune2fs –c or –i to override.
+[root@f11 ~]# e2fsck –pf /dev/ram0
+/dev/ram0: Group descriptor 0 checksum is invalid.  FIXED.
+/dev/ram0: 140/4096 files (0.7% non-contiguous), 3291/16384 blocks
+[root@f11 ~]# mount /dev/ram0 mntCleusb (ATTENTION : il peut être nécessaire de faire un sudo fsck /dev/ram0)
+[root@f11 ~]# df –Thi /mnt2
+Filesystem       Type    Inodes  IUsed   IFree   IUse% Mounted on
+/dev/ram0        ext4      4.0K    140      3.9K    4%       /mnt2 
+
+
+(Taille d'un bloc : sudo /sbin/dumpe2fs /dev/sda7 | grep "Block size")
+(Taille d'un inode : sudo tune2fs -l /dev/sda6|grep "Inode size"

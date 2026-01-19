@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0047)http://serv1/moodle/mod/resource/view.php?id=88 -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="fr" xml:lang="fr" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<link rel="stylesheet" type="text/css" href="tp_files/styles.php">
+<link rel="stylesheet" type="text/css" href="tp_files/styles(1).php">
+
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="http://serv1/moodle/theme/standard/styles_ie7.css" />
+<![endif]-->
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="http://serv1/moodle/theme/standard/styles_ie6.css" />
+<![endif]-->
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="http://serv1/moodle/theme/chameleon/styles_ie7.css" />
+<![endif]-->
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="http://serv1/moodle/theme/chameleon/styles_ie6.css" />
+<![endif]-->
+
+
+    <meta name="keywords" content="moodle, gestMem: --9-- Cours : Gestion de la mémoire ">
+    <title>gestMem: --9-- Cours : Gestion de la mémoire</title>
+    <link rel="shortcut icon" href="http://serv1/moodle/theme/chameleon/favicon.ico">
+
+        <!--<style type="text/css">/*<![CDATA[*/ body{behavior:url(http://serv1/moodle/lib/csshover.htc);} /*]]>*/</style>-->
+
+<script type="text/javascript" src="tp_files/javascript-static.js"></script>
+<script type="text/javascript" src="tp_files/javascript-mod.php"></script>
+<script type="text/javascript" src="tp_files/overlib.js"></script>
+<script type="text/javascript" src="tp_files/overlib_cssstyle.js"></script>
+<script type="text/javascript" src="tp_files/cookies.js"></script>
+<script type="text/javascript" src="tp_files/ufo.js"></script>
+<script type="text/javascript" src="tp_files/dropdown.js"></script>  
+
+<script type="text/javascript" defer="defer">
+//<![CDATA[
+setTimeout('fix_column_widths()', 20);
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+function openpopup(url,name,options,fullscreen) {
+  fullurl = "http://serv1/moodle" + url;
+  windowobj = window.open(fullurl,name,options);
+  if (fullscreen) {
+     windowobj.moveTo(0,0);
+     windowobj.resizeTo(screen.availWidth,screen.availHeight);
+  }
+  windowobj.focus();
+  return false;
+}
+
+function uncheckall() {
+  void(d=document);
+  void(el=d.getElementsByTagName('INPUT'));
+  for(i=0;i<el.length;i++) {
+    void(el[i].checked=0);
+  }
+}
+
+function checkall() {
+  void(d=document);
+  void(el=d.getElementsByTagName('INPUT'));
+  for(i=0;i<el.length;i++) {
+    void(el[i].checked=1);
+  }
+}
+
+function inserttext(text) {
+  text = ' ' + text + ' ';
+  if ( opener.document.forms['theform'].message.createTextRange && opener.document.forms['theform'].message.caretPos) {
+    var caretPos = opener.document.forms['theform'].message.caretPos;
+    caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+  } else {
+    opener.document.forms['theform'].message.value  += text;
+  }
+  opener.document.forms['theform'].message.focus();
+}
+
+function getElementsByClassName(oElm, strTagName, oClassNames){
+	var arrElements = (strTagName == "*" && oElm.all)? oElm.all : oElm.getElementsByTagName(strTagName);
+	var arrReturnElements = new Array();
+	var arrRegExpClassNames = new Array();
+	if(typeof oClassNames == "object"){
+		for(var i=0; i<oClassNames.length; i++){
+			arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)"));
+		}
+	}
+	else{
+		arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)"));
+	}
+	var oElement;
+	var bMatchesAll;
+	for(var j=0; j<arrElements.length; j++){
+		oElement = arrElements[j];
+		bMatchesAll = true;
+		for(var k=0; k<arrRegExpClassNames.length; k++){
+			if(!arrRegExpClassNames[k].test(oElement.className)){
+				bMatchesAll = false;
+				break;
+			}
+		}
+		if(bMatchesAll){
+			arrReturnElements.push(oElement);
+		}
+	}
+	return (arrReturnElements)
+}
+//]]>
+</script>
+<style type="text/css">/* Local ID — mndocdiojkckhpnhpeminpalidafeink */
+/* Web Store ID — ihmgiclibbndffejedjimfjmfoabpcke */
+
+.TnITTtw-help-selected-wrap {
+  border: 1px solid #C7C6C2;
+  box-shadow: 0 0 10px rgba(43, 43, 43, 0.325);
+  border-radius: 4px;
+  width: 231px
+}
+
+  .TnITTtw-help-inside-layout {
+    height: 133px;
+    background: #F5F5F5;
+    border-radius: 3px
+  }
+
+    .TnITTtw-left-particle {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      box-shadow: inset 0 1px 0 white;
+      color: #4E4E4E;
+      text-shadow: 0 1px 0 white;
+      width: 194px;
+      display: inline-block;
+      border-right: 1px solid #D9D9D9
+    }
+
+      .TnITTtw-content-layout {
+        text-align: left;
+        margin: 10px 15px
+      }
+
+        .TnITTtw-variant-bunch-wrap {
+
+        }
+
+          .TnITTtw-variant-bunch-wrap .inside-layout {
+
+          }
+
+            .TnITTtw-main-variant-wrap {
+
+            }
+
+              .TnITTtw-main-variant {
+                font-weight: 700;
+                font-size: 15px;
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.775);
+                display: inline-block;
+                vertical-align: top;
+                color: #2B2B2B
+              }
+
+            .TnITTtw-variants-by-pos {
+              
+            }
+
+              .TnITTtw-TnITTtw-variant-row {
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.775)
+              }
+
+                .TnITTtw-v-pos {
+                  font-weight: 700;
+                  margin-top: 10px;
+                  font-size: 12px;
+                  color: #545454
+                }
+
+                  .TnITTtw-v-pos:first-child {
+                    margin-top: 8px
+                  }
+
+                .TnITTtw-v-closest-wrap {
+                  font-size: 13px;
+                  color: #4E4E4E
+                }
+
+                  .TnITTtw-v-item {
+                    display: inline-block
+                  }
+
+        .TnITTtw-listen-disabled {
+          opacity: 0.475;
+          cursor: default
+        }
+
+    .TnITTtw-right-particle {
+      background: rgba(255, 255, 255, 0.125);
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      display: inline-block;
+      width: 36px;
+      height: 133px;
+      vertical-align: top;
+      box-shadow: inset 1px 0 3px rgba(43, 43, 43, 0.05), inset 0 1px 0 #F5F5F5
+    }
+
+      .TnITTtw-sidebar {
+
+      }
+
+        .TnITTtw-sbutton {
+          position: absolute;
+          -webkit-user-select: none;
+          cursor: pointer
+        }
+
+        .TnITTtw-listen-button {
+          width: 16px;
+          height: 17px;
+          background: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/resources/images/sprites/sprite.png);
+          background-position: -54px 153px;
+          margin: 10px 0 0 10px
+        }
+
+          .TnITTtw-listen-button:active, .TnITTtw-listen-disabled {
+            background-position: -54px 136px
+          }
+
+/* ========== */
+/* Scrollbars */
+
+#TnITTtw-trVisibleLayout {
+  position: relative !important;
+  overflow: hidden;
+  height: 133px;
+  width: 100%
+}
+
+#TnITTtw-tr-scrollbar {
+  position: absolute;
+  display: block;
+  width: 9px; 
+  height: 135px; 
+  font-size: 1px
+}
+
+#TnITTtw-track { 
+  position: absolute;
+  left: 185px;
+  top: -134px;
+  width: 11px;
+  height: 129px;
+  background: transparent
+}
+
+#TnITTtw-dragBar {
+  position: absolute; 
+  left: 1px;
+  top: 1px;
+  width: 5px; 
+  height: 10px;
+  background: rgba(43, 43, 43, 0.475);
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #FFF
+}
+
+  #TnITTtw-dragBar:hover, #TnITTtw-dragBar:active {
+    background: rgba(43, 43, 43, 0.775)
+  } 
+
+#TnITTtw-scrollbar, #TnITTtw-track, #TnITTtw-dragBar {
+  -webkit-user-select: none
+}</style><style type="text/css">#TnITTtw-tooltip-wrap {
+  position: absolute;
+  z-index: 9999;
+  font-family: Tahoma;
+  font-size: 13px;
+  line-height: normal
+}
+
+  .TnITTtw-inside-layout {
+
+  }
+
+    .TnITTtw-content {
+      
+    }</style><style type="text/css">.TnITTtw-arrow {
+  display: none;
+  width: 12px;
+  height: 6px;
+  background: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/resources/images/sprites/sprite.png);
+  position: relative
+}
+
+.TnITTtw-top-arrow {
+  background-position: -108px 148px;
+  bottom: -1px
+}
+
+.TnITTtw-bottom-arrow {
+  background-position: -108px 154px;
+  top: -1px
+}</style><style type="text/css">#TnITTtw-tooltip-wrap {
+  position: absolute;
+  z-index: 9999;
+  font-family: Tahoma;
+  font-size: 13px;
+  line-height: normal
+}
+
+  .TnITTtw-inside-layout {
+
+  }
+
+    .TnITTtw-content {
+      
+    }</style><style type="text/css"></style><style type="text/css"></style>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">KOURITAL Mohamed</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">50100.0000000000</mso:Order>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">KOURITAL Mohamed</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ContentTypeId msdt:dt="string">0x0101002B8D452BAFB8ED42ABC8126835C3F547</mso:ContentTypeId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body class="mod-resource course-15 dir-ltr lang-fr_utf8" id="mod-resource-view">
+
+<div id="page">
+
+    <div id="header" class="clearfix">
+      <h1 class="headermain">--9-- Cours : Gestion de la mémoire</h1>
+      <div class="headermenu"><div class="logininfo">Connecté sous le nom «&nbsp;<a href="http://serv1/moodle/user/view.php?id=2&course=15">Administrateur komo</a>&nbsp;»  (<a href="http://serv1/moodle/login/logout.php?sesskey=753rgvQvV8">Déconnexion</a>)</div></div>
+    </div>
+    <div class="navbar clearfix">
+            <div class="breadcrumb"><h2 class="accesshide ">Vous êtes ici</h2> <ul>
+<li class="first"><a onclick="this.target=&#39;_top&#39;" href="http://serv1/moodle/">ELEARNING TSSI</a></li><li class="first"> <span class="accesshide ">/&nbsp;</span><span class="arrow sep">►</span> <a onclick="this.target=&#39;_top&#39;" href="http://serv1/moodle/course/view.php?id=15">gestMem</a></li></ul></div>
+        <div class="navbutton"><form method="get" action="http://serv1/moodle/course/mod.php" onsubmit="this.target=&#39;_top&#39;; return true"><div><input type="hidden" name="update" value="88"><input type="hidden" name="return" value="true"><input type="hidden" name="sesskey" value="753rgvQvV8"><input type="submit" value="Modifier Ressource"></div></form></div>
+        </div>
+    <!-- END OF HEADER -->
+<div id="content">
+<table id="layout-table"><tbody><tr><td style="width: 180px;" id="left-column"><div><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-1" class="skip-block">Sauter Personnes</a><div id="inst146" class="block_participants sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst146" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Personnes&#39;, &#39;Cacher bloc Personnes&#39;); return false;" alt="Cacher bloc Personnes" title="Cacher bloc Personnes" class="hide-show-image"><h2>Personnes</h2></div></div><div class="content">
+<ul class="list">
+<li class="r0"><div class="icon column c0"><img src="tp_files/users.gif" class="icon" alt=""></div><div class="column c1"><a title="Liste de tous les utilisateurs" href="http://serv1/moodle/user/index.php?contextid=290">Participants</a></div></li>
+</ul>
+</div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst146","Afficher bloc Personnes","Cacher bloc Personnes");
+//]]>
+</script><span id="sb-1" class="skip-block-to"></span><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-2" class="skip-block">Sauter Activités</a><div id="inst147" class="block_activity_modules sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst147" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Activités&#39;, &#39;Cacher bloc Activités&#39;); return false;" alt="Cacher bloc Activités" title="Cacher bloc Activités" class="hide-show-image"><h2>Activités</h2></div></div><div class="content">
+<ul class="list">
+<li class="r0"><div class="icon column c0"><img src="tp_files/icon.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/mod/forum/index.php?id=15">Forums</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/icon(1).gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/mod/resource/index.php?id=15">Ressources</a></div></li>
+</ul>
+</div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst147","Afficher bloc Activités","Cacher bloc Activités");
+//]]>
+</script><span id="sb-2" class="skip-block-to"></span><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-3" class="skip-block">Sauter Recherche forums</a><div id="inst148" class="block_search_forums sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst148" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Recherche forums&#39;, &#39;Cacher bloc Recherche forums&#39;); return false;" alt="Cacher bloc Recherche forums" title="Cacher bloc Recherche forums" class="hide-show-image"><h2>Recherche forums</h2></div></div><div class="content"><div class="searchform"><form action="http://serv1/moodle/mod/forum/search.php" style="display:inline"><fieldset class="invisiblefieldset"><input name="id" type="hidden" value="15"><label class="accesshide" for="searchform_search">Rechercher</label><input id="searchform_search" name="search" type="text" size="16"><button id="searchform_button" type="submit" title="Rechercher">Valider</button><br><a href="http://serv1/moodle/mod/forum/search.php?id=15">Recherche avancée</a><span class="helplink"><a title="Aide sur Recherche avancée (nouvelle fenêtre)" href="http://serv1/moodle/help.php?module=moodle&file=search.html&forcelang=" onclick="this.target=&#39;popup&#39;; return openpopup(&#39;/help.php?module=moodle&amp;file=search.html&amp;forcelang=&#39;, &#39;popup&#39;, &#39;menubar=0,location=0,scrollbars,resizable,width=500,height=400&#39;, 0);"><img class="iconhelp" alt="Aide sur Recherche avancée (nouvelle fenêtre)" src="tp_files/help.gif"></a></span></fieldset></form></div></div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst148","Afficher bloc Recherche forums","Cacher bloc Recherche forums");
+//]]>
+</script><span id="sb-3" class="skip-block-to"></span><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-4" class="skip-block">Sauter Administration</a><div id="inst149" class="block_admin sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst149" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Administration&#39;, &#39;Cacher bloc Administration&#39;); return false;" alt="Cacher bloc Administration" title="Cacher bloc Administration" class="hide-show-image"><h2>Administration</h2></div></div><div class="content">
+<ul class="list">
+<li class="r0"><div class="icon column c0"><img src="tp_files/edit.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/mod/resource/view.php?id=15&edit=on&sesskey=753rgvQvV8">Activer le mode édition</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/settings.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/course/edit.php?id=15">Paramètres</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/roles.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/admin/roles/assign.php?contextid=290">Attribution des rôles</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/grades.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/grade/report/index.php?id=15">Notes</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/group.gif" class="icon" alt=""></div><div class="column c1"><a title="Groupes" href="http://serv1/moodle/group/index.php?id=15">Groupes</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/backup.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/backup/backup.php?id=15">Sauvegarde</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/restore.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/files/index.php?id=15&wdir=/backupdata">Restauration</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/restore.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/course/import.php?id=15">Importation</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/return.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/course/reset.php?id=15">Réinitialisation</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/stats.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/course/report.php?id=15">Rapports</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/questions.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/question/edit.php?courseid=15">Questions</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/files.gif" class="icon" alt=""></div><div class="column c1"><a href="http://serv1/moodle/files/index.php?id=15">Fichiers</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/user.gif" alt=""></div><div class="column c1"><a href="http://serv1/moodle/user/view.php?id=2&course=15">Profil</a></div></li>
+</ul>
+</div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst149","Afficher bloc Administration","Cacher bloc Administration");
+//]]>
+</script><span id="sb-4" class="skip-block-to"></span><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-5" class="skip-block">Sauter Catégories de cours</a><div id="inst150" class="block_course_list sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst150" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Catégories de cours&#39;, &#39;Cacher bloc Catégories de cours&#39;); return false;" alt="Cacher bloc Catégories de cours" title="Cacher bloc Catégories de cours" class="hide-show-image"><h2>Catégories de cours</h2></div></div><div class="content">
+<ul class="list">
+<li class="r0"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a href="http://serv1/moodle/course/category.php?id=29">Gestion</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a href="http://serv1/moodle/course/category.php?id=7">Accueil des stagiaires</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a href="http://serv1/moodle/course/category.php?id=2">ACTIVITE 1</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a class="dimmed" href="http://serv1/moodle/course/category.php?id=6">Recrutement</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a href="http://serv1/moodle/course/category.php?id=11">Programmation</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a class="dimmed" href="http://serv1/moodle/course/category.php?id=39">Sujets de Cours</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a class="dimmed" href="http://serv1/moodle/course/category.php?id=40">Activité 2</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="tp_files/course.gif" class="icon" alt="Catégorie de cours"></div><div class="column c1"><a class="dimmed" href="http://serv1/moodle/course/category.php?id=67">Activité 3</a></div></li>
+</ul>
+<div class="footer"><a href="http://serv1/moodle/course/index.php">Tous les cours</a> ...</div></div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst150","Afficher bloc Catégories de cours","Cacher bloc Catégories de cours");
+//]]>
+</script><span id="sb-5" class="skip-block-to"></span></div></td><td id="middle-column"><div class="middle-column-wrap"><div id="resource"> <style type="text/css">p { margin-bottom: 0.21cm; }h5 { margin-bottom: 0.21cm; }h5.western { font-family: &amp;amp;amp;amp;quot;Arial&amp;amp;amp;amp;quot;,sans-serif; font-size: 11pt; }h5.cjk { font-family: &amp;amp;amp;amp;quot;MS Mincho&amp;amp;amp;amp;quot;; font-size: 11pt; }h5.ctl { font-family: &amp;amp;amp;amp;quot;Tahoma&amp;amp;amp;amp;quot;; font-size: 11pt; }h6 { margin-bottom: 0.21cm; }h6.western { font-family: &amp;amp;amp;amp;quot;Arial&amp;amp;amp;amp;quot;,sans-serif; font-size: 10pt; }h6.cjk { font-family: &amp;amp;amp;amp;quot;MS Mincho&amp;amp;amp;amp;quot;; font-size: 10pt; }h6.ctl { font-family: &amp;amp;amp;amp;quot;Tahoma&amp;amp;amp;amp;quot;; font-size: 10pt; }td p { margin-bottom: 0cm; }</style>
+<h5 class="western">Exercice 4 : Gestion de la mémoire (6 pts)</h5>
+<h6 class="western">Pagination et segmentation (4 pts)</h6>
+<p><font>Nous supposerons dans tout cet exercice qu'un processus dispose de 4 segments 0, 1, 2, et 3 de taille respective 16394, 8250, 32768 et 4084.</font></p>
+<p><font>Pour chaque question, trouver l'adresse physique des adresses virtuelles suivantes où le terme de gauche dans chaque couple représente le numéro du segment concerné, et le terme de droite le déplacement à l'intérieur de chaque segment :</font></p>
+<ol>
+  <li>
+    <p><font>(0, 8196)</font></p> </li>
+  <li>
+    <p><font>(1, 1024)</font></p> </li>
+  <li>
+    <p><font>(2, 30000)</font></p> </li>
+  <li>
+    <p><font>(3, 4090)</font></p> </li>
+</ol>
+<p><font><i>(a) Segmentation pure (les segments ne sont pas paginés et sont donc stockés complètement en mémoire)</i></font></p>
+<p style="font-style: normal;"><font>Donnez l'adresse physique de chaque adresse virtuelle si la table des segments est la suivante : <br></font></p>
+<p style="font-style: normal;"><font><br></font> </p> <center></center>
+<p> <style type="text/css">td p { margin-bottom: 0cm; }p { margin-bottom: 0.21cm; }</style> </p><center>
+<table width="233" cellspacing="0" cellpadding="4" border="1"> <colgroup><col width="88"> <col width="127"> </colgroup><tbody>
+  <tr>
+    <td width="88" height="17">
+      <p align="CENTER"><font>N° segment </font> </p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>Adresse physique</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88" height="18">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>8500</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88" height="18">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>10</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88" height="18">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>29990</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88" height="17">
+      <p align="CENTER"><font>3</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>24900</font></p>
+    </td>
+  </tr> </tbody>
+</table> </center> <br>
+<p></p>
+<p><font><i>(b) Segmentation paginée (chaque segment est paginé)</i></font></p>
+<p style="font-style: normal;"><font>La mémoire physique est paginée (donc les segments sont eux-mêmes divisés en pages) avec la taille de 4Ko pour les pages. Calculez les adresses physiques des adresses virtuelles précédentes sous cette nouvelle hypothèse avec la table des correspondances suivante :</font></p>
+<p style="font-style: normal;"><font><br></font></p> <center>
+<table width="483" cellspacing="0" cellpadding="4" border="1"> <colgroup><col width="88"> <col width="123"> <col width="127"> <col width="111"> </colgroup><tbody>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>N ° segment</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>N ° page virtuelle</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>N° page physique</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>Bit de présence</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>4</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>3</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>7</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>3</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>4</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>5</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>6</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>7</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>3</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>8</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>6</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>9</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>10</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>4</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>11</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>12</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>5</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>13</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>3</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>14</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="88">
+      <p align="CENTER"><font>0</font></p>
+    </td>
+    <td width="123">
+      <p align="CENTER"><font>2</font></p>
+    </td>
+    <td width="127">
+      <p align="CENTER"><font>15</font></p>
+    </td>
+    <td width="111">
+      <p align="CENTER"><font>1</font></p>
+    </td>
+  </tr> </tbody>
+</table> </center>
+<p style="font-style: normal;"><br><br> </p> </div></div></td><td style="width: 180px;" id="right-column"><div><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-6" class="skip-block">Sauter Dernières nouvelles</a><div id="inst151" class="block_news_items sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst151" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Dernières nouvelles&#39;, &#39;Cacher bloc Dernières nouvelles&#39;); return false;" alt="Cacher bloc Dernières nouvelles" title="Cacher bloc Dernières nouvelles" class="hide-show-image"><h2>Dernières nouvelles</h2></div></div><div class="content"><div class="newlink"><a href="http://serv1/moodle/mod/forum/post.php?forum=21">Ajouter un nouveau sujet</a>...</div>(Aucune brève n'a encore été publiée)</div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst151","Afficher bloc Dernières nouvelles","Cacher bloc Dernières nouvelles");
+//]]>
+</script><span id="sb-6" class="skip-block-to"></span><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-7" class="skip-block">Sauter Événements à venir</a><div id="inst152" class="block_calendar_upcoming sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst152" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Événements à venir&#39;, &#39;Cacher bloc Événements à venir&#39;); return false;" alt="Cacher bloc Événements à venir" title="Cacher bloc Événements à venir" class="hide-show-image"><h2>Événements à venir</h2></div></div><div class="content"><div class="post">Il n'y a pas d'événement à venir</div><div class="footer"><br><a href="http://serv1/moodle/calendar/view.php?view=upcoming&course=15">Aller au calendrier</a>...<br><a href="http://serv1/moodle/calendar/event.php?action=new&course=15">Nouvel événement</a>...</div></div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst152","Afficher bloc Événements à venir","Cacher bloc Événements à venir");
+//]]>
+</script><span id="sb-7" class="skip-block-to"></span><a href="http://serv1/moodle/mod/resource/view.php?id=88#sb-8" class="skip-block">Sauter Activité récente</a><div id="inst153" class="block_recent_activity sideblock"><div class="header"><div class="title"><input type="image" src="tp_files/switch_minus.gif" id="togglehide_inst153" onclick="elementToggleHide(this, true, function(el) {return findParentNode(el, &#39;DIV&#39;, &#39;sideblock&#39;); }, &#39;Afficher bloc Activité récente&#39;, &#39;Cacher bloc Activité récente&#39;); return false;" alt="Cacher bloc Activité récente" title="Cacher bloc Activité récente" class="hide-show-image"><h2>Activité récente</h2></div></div><div class="content"><div class="activitydate">Activités observées</div><div class="activityhead"><a href="http://serv1/moodle/course/recent.php?id=15">Rapport complet des activités récentes...</a></div>
+<p class="message">Rien de nouveau depuis votre dernière visite</p></div></div><script type="text/javascript">
+//<![CDATA[
+elementCookieHide("inst153","Afficher bloc Activité récente","Cacher bloc Activité récente");
+//]]>
+</script><span id="sb-8" class="skip-block-to"></span></div></td></tr></tbody></table>
+</div> <!-- end div containerContent -->
+<!-- START OF FOOTER -->
+<div id="footer">
+<p class="helplink"><a href="http://docs.moodle.org/fr/mod/resource/view"><img class="iconhelp" src="tp_files/docs.gif" alt="">Documentation Moodle pour cette page</a></p><div class="logininfo">Connecté sous le nom «&nbsp;<a href="http://serv1/moodle/user/view.php?id=2&course=15">Administrateur komo</a>&nbsp;»  (<a href="http://serv1/moodle/login/logout.php?sesskey=753rgvQvV8">Déconnexion</a>)</div><div class="homelink"><a href="http://serv1/moodle/course/view.php?id=15">gestMem</a></div><!-- <p><div class="homelink"><a  href="/course/view.php?id=">  </a></div></p> -->
+<p>
+<!-- <<a href="http://validator.w3.org/check?verbose=1&amp;ss=1&amp;uri=http%3A%2F%2Fserv1%2Fmoodle%2Fmod%2Fresource%2Fview.php%3Fid%3D88"><img src="http://serv1/moodle/theme/chameleon/xhtml_1_0.gif" alt="XHTML Validator" /></a>
+<a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fserv1%2Fmoodle%2Fmod%2Fresource%2Fview.php%3Fid%3D88&amp;warning=1&amp;profile=css2&amp;usermedium=all"><img src="http://serv1/moodle/theme/chameleon/css.gif" alt="CSS Validator" /></a> 
+<a href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=-1&amp;url1=http%3A%2F%2Fserv1%2Fmoodle%2Fmod%2Fresource%2Fview.php%3Fid%3D88"><img src="http://serv1/moodle/theme/chameleon/section_508.gif" alt="Section 508 Validator" /></a> -->
+</p>
+</div>
+</div>
+
+
+</body></html>

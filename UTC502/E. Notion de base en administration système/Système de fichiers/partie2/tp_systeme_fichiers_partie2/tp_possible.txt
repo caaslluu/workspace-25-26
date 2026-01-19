@@ -1,0 +1,6 @@
+- LM n° 24, p 70 : Découvrez les stratégies d'évolution pour nos futurs systèmes de fichiers
+- ZFS : ?
+- BTRFS : ? (OK)
+- Stockage réseau (NBD) : LM 118, p. 56 
+- Clustering et systèmes de fichiers réapartis (GlusterFS) : LM 133, p. 48
+- GlusterFS 3.2 : LM 144, p.56 et LM 144, p. 56

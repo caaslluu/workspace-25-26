@@ -1,0 +1,244 @@
+0. le code 
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv){
+	printf("Coucou Monde\n");
+	return(EXIT_SUCCESS);
+}
+
+
+Ce code ne fait qu'afficher le texte "Coucou monde", suivi d'un retour à la ligne, avant de se terminer.
+
+1. Le préprocesseur (précompilation)
+$ cpp main.c -o main.i
+
+$ ls -lh
+total 72K
+-rw-r--r-- 1 mohamed mohamed 145 2011-10-09 16:56 main.c
+-rw-r--r-- 1 mohamed mohamed 58K 2011-10-09 16:57 main.i
+
+Notre fichier main.c qui faisait 145 octets a été transformé en un source C de 58 Ko.
+En effet, les directives #include sont destinée au préprocesseur afin qu'il intègre le code présent dans les fichiers spécifiés. 
+
+Le fichier main.i :
+
+$ less main.i
+
+# 1 "main.c"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "main.c"
+# 1 "/usr/include/unistd.h" 1 3 4
+# 26 "/usr/include/unistd.h" 3 4
+# 1 "/usr/include/features.h" 1 3 4
+# 323 "/usr/include/features.h" 3 4
+# 1 "/usr/include/bits/predefs.h" 1 3 4
+# 324 "/usr/include/features.h" 2 3 4
+# 356 "/usr/include/features.h" 3 4
+# 1 "/usr/include/sys/cdefs.h" 1 3 4
+# 353 "/usr/include/sys/cdefs.h" 3 4
+# 1 "/usr/include/bits/wordsize.h" 1 3 4
+# 354 "/usr/include/sys/cdefs.h" 2 3 4
+# 357 "/usr/include/features.h" 2 3 4
+# 388 "/usr/include/features.h" 3 4
+# 1 "/usr/include/gnu/stubs.h" 1 3 4
+
+Dans le fichier main.i, nous n'avons plus aucune instruction pour le préprocesseur.
+
+2. Compilateur (compilation)
+
+$ gcc -fpreprocessed -S main.i
+
+Nous utilisons l'option -fpreprocessed pour spécifier que le source main.i à déjà fait l'objet d'un traitement par le préprocesseur.
+En temps normal, personne ne s'amuse à cela en dehors de démonstration pédagogique. GCC appel lui-même le préprocesseur.
+
+Après cette étape, nous obtenons le fichier main.s qui est un source en assembleur :
+
+$ less main.s
+
+        .file   "main.c"
+        .section        .rodata
+.LC0:
+        .string "Coucou Monde"
+        .text
+.globl main
+        .type   main, @function
+main:
+.LFB0:
+        .cfi_startproc
+        pushq   %rbp
+        .cfi_def_cfa_offset 16
+        movq    %rsp, %rbp
+        .cfi_offset 6, -16
+        .cfi_def_cfa_register 6
+        subq    $16, %rsp
+        movl    %edi, -4(%rbp)
+        movq    %rsi, -16(%rbp)
+        movl    $.LC0, %edi
+        call    puts
+        movl    $0, %eax
+        leave
+        .cfi_def_cfa 7, 8
+        ret
+        .cfi_endproc
+.LFE0:
+        .size   main, .-main
+        .ident  "GCC: (Ubuntu/Linaro 4.5.2-8ubuntu4) 4.5.2"
+        .section        .note.GNU-stack,"",@progbits
+
+3. Assembleur (produit un source en langage machine)
+
+Nous pouvons assembler notre source main.s en un fichier objet.
+
+$ gcc -c main.s
+
+L'option -c demande à GCC de ne pas procéder à l'édition de liens
+
+$ file main.o
+main.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
+
+La commande file nous montre le type du fichier obtenu.
+
+Explication sur la sortie de la commande :
+
+- ELF :
+-- The Executable and Linkable Format (ELF, formerly called Extensible Linking Format). Tout comme les images peuvent être stockée dans différents formats de fichiers, les exécutables disposent également de plusieurs formats. Sous GNU/Linux et d'autres UNIX, c'est le format ELF qui est généralement utilisé de nos jours. Il remplace le vieux format a.out (Assembler OUTput). Notez que l'exécutable n'est pas le seul à utiliser ce format, les fichiers  objet sont également des fichiers ELF. 
+D'aute formats sont COFF (Common Object File Format), PE (The Portable Executable) pour Windows, ou encore PEF (Preferred Executable Format) pour BeOS et MacOS, depuis remplacé par Mach-O sur Mac OS X. Dans tous les cas, la commande "file" sur un système UNIX devrait généralement vous permettre de connâitre le format d'un fichier.
+
+- x86-64 : Architecture cible
+- not stripped : means that this .o file includes a symbol table (Une table de symboles est une centralisation des informations rattachées aux identificateurs d'un programme informatique. Comme par exemple : le type, l'emplacement mémoire, la portée, la visibilité, etc.)
+
+
+
+Pour afficher le code assembleur, on peut aussi utiliser :
+$ objdump -d main.o
+
+main.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 10          	sub    $0x10,%rsp
+   8:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   b:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+   f:	bf 00 00 00 00       	mov    $0x0,%edi
+  14:	e8 00 00 00 00       	callq  19 <main+0x19>
+  19:	b8 00 00 00 00       	mov    $0x0,%eax
+  1e:	c9                   	leaveq 
+  1f:	c3                   	retq
+
+
+Remarques (komo faire dessin représentation mémoire) : 
+- Le programme commence à l'@ 0000000000000000 (@ sur 64 bits)
+- La premiere instruction (push   %rbp) de code machine 55 se trouve a l'@ 0000000000000000 est tient sur 1 octet.
+- La seconde instruction (mov    %rsp,%rbp) de code machine 48 89 e5 se trouve a l'@ 0000000000000001 est tient sur 3 octets.
+- La troisième instruction (sub    $0x10,%rsp) de code machine 48 83 ec 10 se trouve a l'@ 0000000000000004 est tient sur 4 octets.
+
+
+4. Editeur de liens
+
+$ gcc -o main main.o
+
+Nous obtenons un binaire exécutable "main" au format ELF.
+
+$ file main
+main: ELF 64-bit LSB  executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.32, 
+BuildID[sha1]=f7801bd54da1dd1134ec2d4bdb0708f1044d3b54, not stripped
+
+ - BuildID : is NOT the hash of a binary or related to it. It is an identifier for the "build" (or compiling) session which produced that binary. It is mostly there for debug purposes, so that the developers can look at the logs, environment, etc. from session number $BuildID and try to fix the problem, reproduce it, etc.
+
+$ ldd main
+	linux-vdso.so.1 =>  (0x00007fff255ff000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ffb52b9e000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007ffb52f5c000)
+
+(CF SUR LE DOCUMENT PAPIER DIAPOS 4 ET VERSO LA PARTIE 3)
+Dans la sortie de la commande "ldd", nous voyons que notre exécutable est lié avec un certain nombre d'autre fichiers : des bibliothèques dynamiquement chargées.
+Lorsqu'on parle de bibliothèques il convient de distinguer deux types
+
+- Statique : archives contenant des fichiers objets 
+
+Exemple :
+$ ar -vt ~/exemples/libl.a (cp  /usr/lib/libl.a ~/exemples/)
+rw-r--r-- 0/0  31792 Feb  1 15:18 2011 dbi_main.o
+rw-r--r-- 0/0  59288 Feb  1 15:18 2011 dbi_result.o
+rw-r--r-- 0/0   7304 Feb  1 15:18 2011 dbd_helper.o
+rw-r--r-- 0/0    608 Feb  1 15:18 2011 atoll.o
+rw-r--r-- 0/0    608 Feb  1 15:18 2011 asprintf.o
+rw-r--r-- 0/0    608 Feb  1 15:18 2011 timegm.o
+
+Elles permettent de mettre à disposition des morceaux de codes, des fonctions sous une forme binaire.
+Avant la production du binaire final, le code utile présent dans la bibliothèques statique est ajouté et les liens entre les appels de fonctions et le code des fonctions elles-mêmes sont établis. Le binaire exécutable intègre ainsi tout le code utile directement dans le fichier ELF résultant.
+
+Cette notion de code réutilisable pose cependant un problème. Si deux programmes, ou plus, souhaitent intégrer le code d'une bibliothèques, il se retrouvera en double dans les différents fichiers ELF => Gachis d'espace mémoire.
+
+
+- Dynamique
+
+Une autre solution consiste donc à utiliser des bibliothèques chargées dynamiquement. Dans ce cas le code tiers n'est pas intégré dans le binaire mais un simple lien, une référence est mis en place. Le programme binaire intègre alors des fonctions permettant de charger la ou les bibliothèques à l'exécution. Le principale avantage de cette solution réside dans le fait que, si la bibliothèque est déjà chargée par un autre programme, il n'est plus utiles de le faire et les fonctions tiers sont alors directement utilisée en mémoire. Le fait de ne pas intégrer entierement le code des bibliothèques permet également de réduire la taille des exécutable (exemple : noyau Linux) 
+
+EXEMPLE DE COMPILATION AVEC BIBLIOTHEQUE DYNAMIQUE ET STATIQUE
+$ gcc main.c -o dyn
+$ gcc -static main.c -o static
+$ ls -lh
+total 904K
+-rwxr-xr-x 1 mohamed mohamed 8,3K 2011-10-09 19:44 dyn
+-rwxr-xr-x 1 mohamed mohamed 786K 2011-10-09 19:44 static
+
+Remarquez la différence de taille des deux binaires ! 
+
+
+========================================================================================================================================================================
+
+A REVOIR !!
+
+$readelf -l main
+
+Elf file type is EXEC (Executable file)
+Entry point 0x400410
+There are 9 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset             VirtAddr           PhysAddr
+                 FileSiz            MemSiz              Flags  Align
+  PHDR           0x0000000000000040 0x0000000000400040 0x0000000000400040
+                 0x00000000000001f8 0x00000000000001f8  R E    8
+  INTERP         0x0000000000000238 0x0000000000400238 0x0000000000400238
+                 0x000000000000001c 0x000000000000001c  R      1
+      [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+  LOAD           0x0000000000000000 0x0000000000400000 0x0000000000400000
+                 0x00000000000006bc 0x00000000000006bc  R E    200000
+  LOAD           0x0000000000000e28 0x0000000000600e28 0x0000000000600e28
+                 0x00000000000001f8 0x0000000000000208  RW     200000
+  DYNAMIC        0x0000000000000e50 0x0000000000600e50 0x0000000000600e50
+                 0x0000000000000190 0x0000000000000190  RW     8
+  NOTE           0x0000000000000254 0x0000000000400254 0x0000000000400254
+                 0x0000000000000044 0x0000000000000044  R      4
+  GNU_EH_FRAME   0x000000000000061c 0x000000000040061c 0x000000000040061c
+                 0x0000000000000024 0x0000000000000024  R      4
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     8
+  GNU_RELRO      0x0000000000000e28 0x0000000000600e28 0x0000000000600e28
+                 0x00000000000001d8 0x00000000000001d8  R      1
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.ABI-tag .note.gnu.build-id .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame 
+   03     .ctors .dtors .jcr .dynamic .got .got.plt .data .bss 
+   04     .dynamic 
+   05     .note.ABI-tag .note.gnu.build-id 
+   06     .eh_frame_hdr 
+   07     
+   08     .ctors .dtors .jcr .dynamic .got
+
+
+
+

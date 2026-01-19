@@ -1,0 +1,1 @@
+Voir pour l'énoncé et le code le livre BLAESS, page 276 (et page 320 pdf).

@@ -1,0 +1,53 @@
+/**************************************************************/
+/*          Exemple de manipulation d'un fichier :            */
+/*           création, positionnment, fermeture               */
+/**************************************************************/
+
+
+#include <stdio.h>
+#include <sys/types.h> // pour le type de retour des fonction read, write, lseek
+#include <sys/stat.h> // pour S_IRUSR, S_IWUSR
+#include <fcntl.h> // pour _RDWR, O_CREAT
+#include <unistd.h> //pour fonctions read, write, close
+
+main(){
+
+	struct eleve{
+		char nom[10];
+		int note;
+	};
+	int fd, i, ret;
+	struct eleve un_eleve;
+
+	fd = open("/home/tssi/fichnotes",O_RDWR|O_CREAT,S_IRUSR|S_IWUSR);
+	if(fd == -1) perror("prob open");
+	i = 0;
+	while(i < 4){
+		printf("Donnez le nom de l'élève \n");
+		scanf("%s", un_eleve.nom); //remarque pas de & car tableau
+		printf("Donnez la note de l'élève \n");
+		scanf("%d", &un_eleve.note);
+		write(fd, &un_eleve, sizeof(un_eleve)); //fd incrémenté du nombre d'octets écrits
+		i++;
+	}
+	/* Les lectures et les écritures sur un fichier s'effectue de façon
+	séquentielle. Il est cependant possible de modifier la position
+	courante du pointeur de fichier à l'aide de la primitive lseek() */
+	ret = lseek(fd, 0, SEEK_SET); //le pointeur fd est modifié d'une valeur égale à 0 octets selon une base SEEK_SET(=début du fichier)
+	if(ret == -1)  perror("prob lseek");
+	printf("La nouvelle position est %d\n", ret);
+	i = 0;
+	while(i < 4){
+		read(fd, &un_eleve, sizeof(un_eleve));//fd incrémenté du nombre d'octets lus
+		printf("Le nom et la note de l'élève sont %s, %d\n", un_eleve.nom, un_eleve.note
+		);
+		i++;
+	}
+	close(fd);
+}
+
+
+
+
+
+
